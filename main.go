@@ -24,10 +24,10 @@ const insertSQL = "INSERT INTO song_streaming (" +
 func parseFileArg() string {
 	// Custom help/usage text shown on -h / -help
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "spotifyData imports Spotify streaming history JSON into PostgreSQL.\n\n")
-		fmt.Fprintf(os.Stderr, "Usage:\n  %s -file path/to/Streaming_History.json\n\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "Environment variables (required):\n  DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT\n\n")
-		fmt.Fprintf(os.Stderr, "Flags:\n")
+		fmt.Fprintf(os.Stdout, "spotifyData imports Spotify streaming history JSON into PostgreSQL.\n\n")
+		fmt.Fprintf(os.Stdout, "Usage:\n  %s -file path/to/Streaming_History.json\n\n", os.Args[0])
+		fmt.Fprintf(os.Stdout, "Environment variables (required):\n  DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT\n\n")
+		fmt.Fprintf(os.Stdout, "Flags:\n")
 		flag.PrintDefaults()
 
 		os.Exit(2)
