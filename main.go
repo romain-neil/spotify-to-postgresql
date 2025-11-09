@@ -171,7 +171,7 @@ func insertTracksInBatches(db *sql.DB, export model.Tracks, batchSize int) error
 	}
 
 	// commit remaining
-	if err := tx.Commit(); err != nil {
+	if err = tx.Commit(); err != nil {
 		_ = tx.Rollback()
 		return err
 	}
