@@ -22,10 +22,23 @@ const insertSQL = "INSERT INTO song_streaming (" +
 	") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21);"
 
 func parseFileArg() string {
-	fileName := flag.String("file", "", "file to read from")
+	// Custom help/usage text shown on -h / -help
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "spotifyData imports Spotify streaming history JSON into PostgreSQL.\n\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n  %s -file path/to/Streaming_History.json\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Environment variables (required):\n  DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT\n\n")
+		fmt.Fprintf(os.Stderr, "Flags:\n")
+		flag.PrintDefaults()
+
+		os.Exit(2)
+	}
+
+	fileName := flag.String("file", "", "JSON file to read from (required)")
 	flag.Parse()
 	if *fileName == "" {
-		log.Fatal("file is required")
+		// Show usage and exit with a clear message when -file is missing
+		flag.Usage()
+		log.Fatal("missing required -file argument")
 	}
 	return *fileName
 }
