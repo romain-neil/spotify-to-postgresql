@@ -198,7 +198,7 @@ func main() {
 	}
 
 	// Insert in batches
-	if err := insertTracksInBatches(db, export, 50); err != nil {
+	if err = insertTracksInBatches(db, export, 50); err != nil {
 		log.Fatal(err)
 	}
 
