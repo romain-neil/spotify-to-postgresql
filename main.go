@@ -21,14 +21,14 @@ const insertSQL = "INSERT INTO song_streaming (" +
 	"offline_timestamp, incognito_mode" +
 	") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21);"
 
-func printLog(t ...string) {
+func printLog(t string) {
 	_, _ = fmt.Fprintf(os.Stdout, t)
 }
 
 // Custom help/usage text shown on -h / -help
 func printUsage() {
 	printLog("spotifyData imports Spotify streaming history JSON into PostgreSQL.\n\n")
-	printLog("Usage:\n  %s -file path/to/Streaming_History.json\n\n", os.Args[0])
+	printLog(fmt.Sprintf("Usage:\n  %s -file path/to/Streaming_History.json\n\n", os.Args[0]))
 	printLog("Environment variables (required):\n  DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT\n\n")
 	printLog("Flags:\n")
 	flag.PrintDefaults()
