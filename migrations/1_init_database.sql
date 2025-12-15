@@ -3,7 +3,7 @@
 
 -- Using PostgreSQL-compatible SQL
 CREATE TABLE IF NOT EXISTS song_streaming (
-    ts BIGINT NOT NULL,
+    ts TEXT NOT NULL,
     username TEXT,
     platform TEXT,
     ms_played INTEGER,
