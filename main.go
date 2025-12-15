@@ -127,7 +127,7 @@ func insertTracksInBatches(db *sql.DB, export model.Tracks, batchSize int) error
 	}(stmt)
 
 	count := 0
-	for _, track := range export.Track {
+	for _, track := range export.Tracks {
 		if _, err = stmt.Exec(
 			track.Ts,
 			track.Username,
