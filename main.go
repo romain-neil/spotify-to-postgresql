@@ -10,6 +10,7 @@ import (
 	"os"
 	"spotifyData/model"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -186,9 +187,18 @@ func insertTracksInBatches(db *sql.DB, export model.Tracks, batchSize int) error
 	return nil
 }
 
+func loadEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
+
 func main() {
 	// Parse CLI
 	filePath := parseFileArg()
+
+	loadEnv()
 
 	// Open DB
 	db := openPostgres()
