@@ -48,10 +48,10 @@ Model definitions live in:
   - `go build -o spotify-data-loader`
   - `./spotify-data-loader`
 
-If the program supports passing an input directory or other flags, see `main.go` for the exact invocation and options. A typical workflow is:
 1. Ensure PostgreSQL is running and accessible with your `.env` values.
-2. Place the Spotify JSON files where the program expects them (or pass the directory via a flag/env var, if implemented).
-3. Run the program; it will parse the files and insert rows into PostgreSQL.
+2. Run the program by passing the filename within argument `--file=ListeningHistory.json`
+
+If the file is not found, the program will exit with an error.
 
 ## Querying your data
 Once loaded, you can run SQL queries such as:
