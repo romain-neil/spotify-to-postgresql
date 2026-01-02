@@ -26,20 +26,16 @@ Model definitions live in:
 
 ## Setup
 1. Prepare your Spotify export
-   - Request your data from Spotify (Account Settings → Privacy → Download your data).
+   - Request your data from Spotify.
    - After receiving the ZIP from Spotify, extract it. The Extended Streaming History JSON files are commonly named like `Streaming_History_A.json`, `..._B.json`, etc.
 
 2. Configure database access
-   - Create a `.env` file at the project root (a sample is already present in the repo). Typical variables:
-     - `POSTGRES_HOST`
-     - `POSTGRES_PORT`
-     - `POSTGRES_USER`
-     - `POSTGRES_PASSWORD`
-     - `POSTGRES_DB`
-     - `POSTGRES_SSLMODE` (often `disable` for local)
-
-3. Place your Spotify history files
-   - Put your extracted JSON history files in a convenient directory. A common approach is to use the provided `spotifyData/` folder at the project root, but you may also point the application to any folder you prefer (see `main.go`).
+   - Create a `.env` file at the project root with the following variables:
+     - `DB_USER`
+     - `DB_NAME`
+     - `DB_PASSWORD`
+     - `DB_HOST`
+     - `DB_PORT`
 
 ## Usage
 - Quick start during development:
@@ -69,7 +65,6 @@ Use your favorite SQL client or visualization tool (e.g., Metabase, Grafana, Sup
 ## Project structure (high level)
 - `main.go` — entry point and orchestration
 - `model/` — Go structs for tracks and streaming events
-- `spotifyData/` — optional default location for extracted Spotify JSON files
 
 ## License
 The project is licensed under the GPLv3
